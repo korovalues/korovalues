@@ -250,22 +250,24 @@ body::before {
   gap: 1rem;
 }
 
+.trade-search-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
 .calculator-search-group {
-  position: relative;
+  position: static;
 }
 
 .suggestions-list {
-  position: absolute;
-  inset: auto 0 0;
-  margin-top: 0.6rem;
-  max-height: 300px;
-  overflow: auto;
-  width: 100%;
-  border-radius: 18px;
+  position: static;
+  max-height: 240px;
+  overflow-y: auto;
+  border-radius: 14px;
   border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(10, 12, 16, 0.98);
-  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.42);
-  z-index: 5;
+  background: rgba(10, 12, 16, 0.95);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
 }
 
 .suggestions-list.hidden {
