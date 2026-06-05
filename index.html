@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Koro Values Explorer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero-panel">
+      <div>
+        <p class="eyebrow">Value intelligence</p>
+        <h1>KoroValues</h1>
+      </div>
+      <div class="hero-metrics" aria-live="polite">
+        <div class="metric-card">
+          <span class="metric-value" id="metric-count">0</span>
+          <span class="metric-label">Items loaded</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value" id="metric-rare">0</span>
+          <span class="metric-label">Rare items</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value" id="metric-average">0</span>
+          <span class="metric-label">Average value</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <nav class="side-tabs" aria-label="Page sections">
+        <button type="button" class="tab active" data-panel="explorer-panel">Explorer</button>
+        <button type="button" class="tab" data-panel="trade-panel">Trade</button>
+      </nav>
+
+      <div class="content-area">
+        <section id="explorer-panel" class="panel active">
+          <section class="controls-panel" aria-label="Search and filters">
+            <label class="control-group">
+              <span>Search</span>
+              <input id="search-input" type="search" placeholder="Search by name, acronym or demand" />
+            </label>
+            <label class="control-group">
+              <span>Sort by</span>
+              <select id="sort-select">
+                <option value="valueDesc">Value: High to low</option>
+                <option value="valueAsc">Value: Low to high</option>
+                <option value="rapDesc">RAP: High to low</option>
+                <option value="nameAsc">Name: A → Z</option>
+                <option value="demandDesc">Demand: High first</option>
+              </select>
+            </label>
+            <label class="control-group toggle-group">
+              <input id="rare-toggle" type="checkbox" />
+              <span>Show only rares</span>
+            </label>
+            <button id="reset-button" class="reset-button" type="button">Reset filters</button>
+          </section>
+          <section class="cards-grid" id="cards-grid" aria-live="polite"></section>
+        </section>
+
+        <section id="trade-panel" class="panel" hidden>
+          <div class="trade-header">
+            <div>
+              <p class="eyebrow">Trade evaluator</p>
+              <h2>Build both sides of your deal</h2>
+              <p class="hero-copy">Add item stacks on each side, compare totals, and assess trade balance in real time.</p>
+            </div>
+          </div>
+
+          <div class="trade-grid">
+            <article class="trade-side">
+              <div class="trade-side-title">
+                <p class="eyebrow">Your offer</p>
+                <h3>Side A</h3>
+              </div>
+              <label class="control-group calculator-search-group">
+                <span>Search items</span>
+                <input id="trade-search-left" type="search" placeholder="Search item name, acronym, demand" autocomplete="off" />
+                <div id="trade-suggestions-left" class="suggestions-list hidden" role="listbox"></div>
+              </label>
+              <div id="trade-list-left" class="trade-item-list"></div>
+              <div class="trade-side-summary">
+                <div class="summary-card summary-small">
+                  <span>Side A total value</span>
+                  <strong id="trade-total-value-left">—</strong>
+                </div>
+                <div class="summary-card summary-small">
+                  <span>Side A total RAP</span>
+                  <strong id="trade-total-rap-left">—</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="trade-side">
+              <div class="trade-side-title">
+                <p class="eyebrow">Their offer</p>
+                <h3>Side B</h3>
+              </div>
+              <label class="control-group calculator-search-group">
+                <span>Search items</span>
+                <input id="trade-search-right" type="search" placeholder="Search item name, acronym, demand" autocomplete="off" />
+                <div id="trade-suggestions-right" class="suggestions-list hidden" role="listbox"></div>
+              </label>
+              <div id="trade-list-right" class="trade-item-list"></div>
+              <div class="trade-side-summary">
+                <div class="summary-card summary-small">
+                  <span>Side B total value</span>
+                  <strong id="trade-total-value-right">—</strong>
+                </div>
+                <div class="summary-card summary-small">
+                  <span>Side B total RAP</span>
+                  <strong id="trade-total-rap-right">—</strong>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="trade-compare">
+            <div class="summary-card compare-card">
+              <span>Net value difference</span>
+              <strong id="trade-net-difference">—</strong>
+            </div>
+            <p class="calculator-note" id="trade-note">Add items to both sides to compare the deal balance.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <p>Data source: <code>values.json</code> / <code>values</code>. Open locally with any static server for best performance.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
