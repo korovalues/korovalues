@@ -46,7 +46,7 @@ function formatNumber(value) {
 
 function formatValue(value) {
   if (!value || value === 0) return 'N/A';
-  return `₵ ${formatNumber(value)}`;
+  return `R$ ${formatNumber(value)}`;
 }
 
 function getTrendLabel(trend) {
@@ -84,7 +84,7 @@ function renderMetrics(itemsList) {
 
   animateCount(metricCount, total);
   animateCount(metricRare, rareCount);
-  animateCount(metricAverage, average, '₵ ');
+  animateCount(metricAverage, average, 'R$ ');
 }
 
 function createBadge(text, type = '') {
