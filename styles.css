@@ -524,6 +524,12 @@ input[type="search"]:focus, select:focus {
   text-align: center;
 }
 
+.mini-message {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
 @media (max-width: 640px) {
   .hero-metrics {
     grid-template-columns: 1fr;
