@@ -368,6 +368,19 @@ async function init() {
   }
 }
 
+const messages = [
+  "Don't forget to follow redxz on Korone!",
+  "Temporary!",
+  "100% hand-coded. You gotta trust me!"
+];
+
+const msgEl = document.getElementById("random-message");
+
+if (msgEl) {
+  msgEl.textContent =
+    messages[Math.floor(Math.random() * messages.length)];
+}
+
 searchInput.addEventListener('input', () => filterItems());
 sortSelect.addEventListener('change', () => filterItems());
 rareToggle.addEventListener('change', () => filterItems());
